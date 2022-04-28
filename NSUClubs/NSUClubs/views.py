@@ -1,0 +1,6 @@
+from cgitb import html
+from django.shortcuts import redirect
+
+
+def home_redirect(request):
+    return redirect('home/home.html')

@@ -1,0 +1,130 @@
+{% extends 'home/base/base.html' %} {% load static %} {%block style%}
+<link rel="stylesheet" href="{% static 'home/styles/home.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+/>
+<script>
+    $(document).ready(function() {
+        $('#select-club').select2();
+        $("#go").click(function() {
+            var val = $('#select-club').val();
+            var str = "/home/" + val;
+            window.location.replace(str);
+
+        });
+    });
+</script>
+{%endblock%} {%block title%}Home{%endblock%} {%block body%}
+
+<div id="cload"></div>
+
+<div id="header">
+    <div class="row">
+        <div class="col-md-4">
+            <div id="logo">
+                <a href="/home/">
+                    <h4>NSU CLUBs</h4>
+                </a>
+            </div>
+
+        </div>
+        <div class="col-md-8">
+            <ul id="menu" class="float-md-end">
+                <li><a href="/home/">Home</a></li>
+                <li><a href="/login/">Login</a></li>
+                <li><a href="/register/">Register</a></li>
+                <li><a href="/all_clubs/">All Clubs</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9"></div>
+        <div class="col-md-3" align="right">
+            <select id="select-club">
+                <option selected disabled="true">select bellow!</option>
+                {%for a in search%}
+                <option>{{a.slug}}</option>
+                {%endfor%}
+            </select>
+            <button class="btn btn-warning" type="submit" id="go">go</button>
+        </div>
+    </div>
+</div>
+
+
+
+<a href="http://www.northsouth.edu/">
+    <h3 align="center" class="text-primary">North South University</h3>
+</a>
+<h4 align="center" class="text-info">Center of Excellence in Higher Education</h4>
+
+<div id="banner" class="py-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="banner-title">
+                <h3>Clubs of North South University</h3>
+                <p class="lead">Better place for practicing individual skills</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Some Clubs of NSU</h2>
+        </div>
+
+        {% for c in club %}
+        <div class="col-md-4">
+            <div class="service-box">
+                <div class="pic">
+                    <a href="/home/{{ c.slug }}" class="rounded"><img src="{{c.logo.url}}" alt="{{c.csname}}"></a>
+                </div>
+                <a href="/home/{{ c.slug }}" class="btn">
+                    <h3>{{ c.cname }}</h3>
+                </a>
+            </div>
+        </div>
+        {%endfor%}
+
+    </div>
+</div>
+
+<div class="section">
+    <div class="col-md-12">
+        <h2>Upcomming Events</h2>
+    </div>
+    <div class="row">
+        {% for e in event %}
+        <div class="col-md-3">
+            <div class="service-box">
+                <div class="club-box">
+                    <P><b>Event</b></P>
+                    <h5><b>{{e.ename}}</b></h5>
+                    <p>Organized by: <b>{{e.eby}}</b></p>
+                    <p>Date: <b>{{e.date}}</b></p>
+                    <p>Place: <b>{{e.place}}</b></p>
+                    <p>Time: <b>{{e.time}}</b></p>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+
+
+
+<!--
+    {% for c in club %}
+<a href="/home/{{ c.slug }}" class="btn"><img src="{{c.logo.url}}" alt="{{c.csname}}"></a>
+<a href="/home/{{ c.slug }}" class="btn">
+    <h3>{{ c.cname }}</h3>
+</a>
+</br>
+</br>
+{% endfor %}
+<p> end</p>
+-->
+
+
+{%endblock%}

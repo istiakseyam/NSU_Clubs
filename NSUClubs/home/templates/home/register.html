@@ -1,0 +1,9 @@
+{% extends 'home/base/base.html' %} {% block body %}
+<h2 align='center'> Register
+    <h2>
+        <form method="post"></form>
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{ form.as_p }}
+        </fieldset>
+        <button type="submit" class="btn btn-primary">register</button> {% endblock body %}

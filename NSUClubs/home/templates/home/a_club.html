@@ -1,0 +1,59 @@
+{% extends 'home/base/base.html' %} {% load static %} {%block style%}
+<link rel="stylesheet" href="{% static 'home/styles/club.css' %}"> {%endblock%} {%block title%}Club page{%endblock%} {%block body%}
+
+<div id="header">
+    <div class="row">
+        <div class="col-md-4">
+            <div id="logo">
+                <a href="/home/">
+                    <h4>NSU CLUBs</h4>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="apic">
+    <img src="{{club_img}}" alt="{{c.csname}}">
+</div>
+<h3>{{club_name}}</h3>
+<h5>{{ club_sname }}</h5>
+<div class="dsip">
+    <p class="fst-italic">{{club_description}}</p>
+</div>
+
+<h3>Club Events</h3>
+<div class="row">
+    {% for e in event %}
+    <div class="col-md-3">
+        <div class="service-box">
+            <div class="club-box">
+                <P><b>Event</b></P>
+                <h5><b>{{e.ename}}</b></h5>
+                <p>Organized by: <b>{{e.eby}}</b></p>
+                <p>Date: <b>{{e.date}}</b></p>
+                <p>Place: <b>{{e.place}}</b></p>
+                <p>Time: <b>{{e.time}}</b></p>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+
+
+<h3>Club Ebs</h3>
+<div class="row">
+    {% for m in member %}
+    <div class="col-md-3">
+        <div class="service-box">
+            <div class="club-box">
+                <div class="pic">
+                    <img src="{{m.photo.url}}" style="display:inline-block;" alt="{{m.mname}}">
+                </div>
+                <h5 align="center"><b>{{m.mname}}</b></h5>
+                <h6 class="fst-italic">{{m.mposition}}</h6>
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div> {%endblock%}

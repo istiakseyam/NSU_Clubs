@@ -1,0 +1,41 @@
+#header {
+    background: hsl(0, 17%, 95%);
+}
+
+#logo {
+    margin-top: 10px;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.dsip {
+    background: rgba(183, 215, 233, 0.7);
+    text-align: left;
+}
+
+.pic {
+    display: bock inline;
+}
+
+.pic img {
+    height: 300px;
+    max-width: 500px;
+    max-height: 500px;
+    display: inline-block;
+    float: left;
+}
+
+.service-box {
+    text-align: center;
+}
+
+.club-box {
+    background: rgba(242, 228, 148, 0.7);
+    margin: 20px;
+}

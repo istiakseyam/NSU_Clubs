@@ -1,0 +1,56 @@
+{% extends 'home/base/base.html' %} {% load static %} {%block style%}
+<link rel="stylesheet" href="{% static 'home/styles/home.css' %}"> {%endblock%} {%block title%}All Clubs{%endblock%} {%block body%}
+
+
+<div id="header">
+    <div class="row">
+        <div class="col-md-4">
+            <div id="logo">
+                <h4>NSU CLUBs</h4>
+            </div>
+
+        </div>
+        <div class="col-md-8">
+            <ul id="menu" class="float-md-end">
+                <li><a href="/home/">Home</a></li>
+                <li><a href="/login/">Login</a></li>
+                <li><a href="/register/">Register</a></li>
+                <li><a href="/all_clubs/">All Clubs</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9"></div>
+        <div class="col-md-3" align="end">
+        </div>
+    </div>
+</div>
+
+
+
+<a href="http://www.northsouth.edu/">
+    <h3 align="center" class="text-primary">North South University</h3>
+</a>
+<h4 align="center" class="text-info">Center of Excellence in Higher Education</h4>
+
+<div class="section">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>All Clubs of NSU</h2>
+        </div>
+
+        {% for c in club %}
+        <div class="col-md-4">
+            <div class="service-box">
+                <div class="pic">
+                    <a href="/home/{{ c.slug }}" class="rounded"><img src="{{c.logo.url}}" alt="{{c.csname}}"></a>
+                </div>
+                <a href="/home/{{ c.slug }}" class="btn">
+                    <h3>{{ c.cname }}</h3>
+                </a>
+            </div>
+        </div>
+        {%endfor%}
+
+    </div>
+</div>
+
+{%endblock%}

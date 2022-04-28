@@ -1,0 +1,8 @@
+{%extends 'home/base/base.html'%} {%block title%}Login{%endblock%} {%block body%}
+<h2 align="center">Login</h2>
+<form method="post" align="center">
+    {% csrf_token %} {{form.as_p}}
+    <button type="button" class="btn btn-warning">register</button>
+    <button type="submit" class="btn btn-success">login</button>
+</form>
+{%endblock%}
